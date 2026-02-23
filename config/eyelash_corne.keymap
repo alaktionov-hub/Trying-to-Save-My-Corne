@@ -165,63 +165,76 @@
         default_layer {
             display-name = "QWERTY";
             bindings = <
-&kp ESC         &kp Q  &kp W                   &kp E                      &kp R                          &kp T                                                                              &arrow_scroll MOVE_Y(-5) UP                                   &kp Y        &kp U                           &kp I                       &kp O                   &kp P     &kp MINUS
-&kp TAB         &kp A  &Control_Mod_L GLOBE S  &Control_Mod_L LEFT_ALT D  &Control_Mod_L LEFT_CONTROL F  &kp G                                                &arrow_scroll MOVE_X(5) LEFT  &mo 5                         &arrow_scroll MOVE_X(-5) RIGHT  &kp H        &Control_Mod_R RIGHT_CONTROL J  &Control_Mod_R RIGHT_ALT K  &Control_Mod_R GLOBE L  &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z  &Control_Mod_L LG(X) X  &Control_Mod_L LG(C) C     &Control_Mod_L LG(V) V         &kp B                                      &trans                                  &arrow_scroll MOVE_Y(5) DOWN                                  &kp N        &kp M                           &kp COMMA                   &kp PERIOD              &kp FSLH  &kp RIGHT_SHIFT
-                                               &mt LG(W) LS(LC(TAB))      &lt 1 DEL                      &Contro_Mod_Universal LEFT_COMMAND RETURN                                                                                                        &lt 2 SPACE  &lt 4 BACKSPACE                 &mt RG(T) RC(TAB)
+&lt 5 TAB       &kp Q  &kp W  &kp E     &kp R  &kp T                      &none         &kp Y      &kp U            &kp I         &kp O    &kp P     &kp BSPC
+&lt 4 CAPS      &kp A  &kp S  &kp D     &kp F  &kp G               &none  &none  &none  &kp H      &kp J            &kp K         &kp L    &kp SEMI  &kp SQT
+&kp LEFT_SHIFT  &kp Z  &kp X  &kp C     &kp V  &kp B      &none           &none         &kp N      &kp M            &kp COMMA     &kp DOT  &kp FSLH  &kp RIGHT_SHIFT
+                              &kp LGUI  &mo 1  &kp SPACE                                &kp ENTER  &lt 2 BACKSPACE  &lt 3 DELETE
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
+        };
+
+        lower_layer {
+            display-name = "NUMBER";
+            bindings = <
+&kp TILDE       &kp N1           &kp N2       &kp N3    &kp N4          &kp N5                           &none         &kp N6            &kp N7                       &kp N8                    &kp N9                &kp N0                 &kp BSPC
+&kp TAB         &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR      &kp PERCENT               &none  &none  &none  &kp CARET         &mt RIGHT_CONTROL AMPERSAND  &mt RIGHT_SHIFT ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PIPE
+&kp LEFT_SHIFT  &kp EQUAL        &kp MINUS    &kp PLUS  &kp LEFT_BRACE  &kp RIGHT_BRACE  &none           &none         &kp LEFT_BRACKET  &kp RIGHT_BRACKET            &kp SEMICOLON             &kp COLON             &kp NON_US_BSLH        &trans
+                                              &trans    &trans          &trans                                         &kp INS           &kp HOME                     &kp END
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        raise_layer {
+            display-name = "SYMBOL";
+            bindings = <
+&trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&trans  &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &trans                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                                    &trans     &trans     &kp SPACE                                                             &kp RET    &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_3 {
+            display-name = "Fn";
+            bindings = <
+&kp ESCAPE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                    &trans          &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11
+&trans      &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &kp F12
+&trans      &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans  &trans  &trans  &trans   &trans
+                            &trans  &trans  &trans                                    &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        layer_4 {
+            bindings = <
+&out OUT_BLE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 3  &bt BT_CLR  &out OUT_USB                    &trans          &rgb_ug RGB_ON   &rgb_ug RGB_SPD  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &trans  &rgb_ug RGB_COLOR_HSB(251,85,46)
+&trans        &trans        &trans        &trans        &trans      &trans                  &trans  &trans  &trans  &rgb_ug RGB_OFF  &rgb_ug RGB_EFR  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF  &trans  &rgb_ug RGB_COLOR_HSB(163,35,94)
+&trans        &trans        &trans        &trans        &trans      &trans        &trans            &trans          &trans           &trans           &trans           &trans           &trans  &rgb_ug RGB_COLOR_HSB(352,77,47)
+                                          &trans        &trans      &trans                                          &trans           &trans           &trans
             >;
         };
 
-        NAV_and_SYSTEM_CONTROL {
-            display-name = "NAV_and_SYSTEM_CONTROL";
+        layer_5 {
             bindings = <
-&trans          &kp NUMBER_1  &kp LG(NUMBER_2)      &kp C_FF              &kp LC(UP_ARROW)      &show_or_hide_launchpad                                      &trans          &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &kp C_MUTE       &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &trans
-&trans          &trans        &kp LS(LG(NUMBER_4))  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_5))  &kp PG_UP                                            &trans  &trans  &trans  &kp HOME              &kp LEFT              &kp UP           &kp DOWN           &kp RIGHT        &kp END
-&kp LEFT_SHIFT  &trans        &trans                &trans                &trans                &kp PG_DN                                  &trans            &trans          &trans                &kp RC(LEFT)          &kp RS(RC(TAB))  &kp RC(TAB)        &kp RC(RIGHT)    &kp RIGHT_SHIFT
-                                                    &trans                &trans                &Contro_Mod_Universal LEFT_COMMAND RETURN                                    &trans                &lt 3 BACKSPACE       &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans  &trans  &mmv MOVE_UP  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans        &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans  &trans        &trans  &trans  &trans
+                        &trans  &trans  &trans                                    &trans  &trans  &trans
             >;
         };
 
-        NUMBER_and_SYMBOL {
-            display-name = "NUMBER_and_SYMBOL";
+        layer_6 {
             bindings = <
-&Control_Mod_L TILDE GRAVE  &Control_Mod_L EXCL NUMBER_1  &Control_Mod_L AT NUMBER_2  &Control_Mod_L HASH NUMBER_3  &Control_Mod_L DLLR NUMBER_4  &Control_Mod_L PRCNT NUMBER_5                                &trans          &Control_Mod_R CARET NUMBER_6  &Control_Mod_R AMPS NUMBER_7  &Control_Mod_R ASTRK NUMBER_8  &Control_Mod_R LPAR NUMBER_9            &Control_Mod_R RPAR NUMBER_0              &trans
-&kp TAB                     &trans                        &kp GLOBE                   &kp LEFT_ALT                  &kp LEFT_CONTROL              &trans                                               &trans  &trans  &trans  &Control_Mod_R ASTRK PLUS      &Control_Mod_R SLASH MINUS    &kp EQUAL                      &Control_Mod_R LEFT_BRACE LEFT_BRACKET  &Control_Mod_R RIGHT_BRACE RIGHT_BRACKET  &kp PIPE
-&kp LEFT_SHIFT              &trans                        &trans                      &trans                        &trans                        &trans                                     &trans            &trans          &kp UNDER                      &kp PERCENT                   &kp LESS_THAN                  &kp GREATER_THAN                        &kp SLASH                                 &kp RIGHT_SHIFT
-                                                                                      &trans                        &trans                        &Contro_Mod_Universal LEFT_COMMAND RETURN                                    &trans                         &trans                        &trans
+&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans            &trans          &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans                                    &trans  &trans  &trans
             >;
-        };
-
-        Fn_and_BT {
-            display-name = "Fn_and_BT";
-            bindings = <
-&kp F1   &kp F2   &kp F3   &kp F4   &kp F5   &kp F6                                                       &trans          &bt BT_SEL 0  &bt BT_SEL 1       &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4    &bt BT_CLR
-&kp F7   &kp F8   &kp F9   &kp F10  &kp F11  &kp F12                                              &trans  &trans  &trans  &bootloader   &kp RIGHT_CONTROL  &kp RIGHT_ALT  &kp GLOBE     &studio_unlock  &bt BT_CLR_ALL
-&kp F13  &kp F14  &kp F15  &kp F16  &kp F17  &kp F18                                    &trans            &trans          &sys_reset    &trans             &trans         &trans        &trans          &kp RIGHT_SHIFT
-                           &trans   &trans   &Contro_Mod_Universal LEFT_COMMAND RETURN                                    &trans        &trans             &trans
-            >;
-        };
-
-        DOCS_and_RGB {
-            bindings = <
-&trans  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_EFF                                              &trans          &kp LG(LC(SPACE))     &kp LG(LA(NUMBER_0))  &kp LG(LS(NUMBER_8))  &kp LG(LS(NUMBER_7))  &kp LG(LS(NUMBER_9))  &trans
-&trans  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFR                                      &trans  &trans  &trans  &kp LG(LA(NUMBER_1))  &kp LG(LA(NUMBER_2))  &kp LG(LA(NUMBER_3))  &kp LG(LA(NUMBER_4))  &kp LG(LA(NUMBER_5))  &kp LG(LA(NUMBER_6))
-&trans  &trans           &trans           &trans           &trans           &rgb_ug RGB_TOG                            &trans            &trans          &trans                &trans                &trans                &trans                &trans                &trans
-                                          &trans           &lt 3 DEL        &Contro_Mod_Universal LEFT_COMMAND RETURN                                    &trans                &trans                &trans
-            >;
-
-            label = "DOCS_and_RGB";
-        };
-
-        Scroll_Layer {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                                                &msc MOVE_Y(-10)                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                               &msc MOVE_X(10)  &trans            &msc MOVE_X(-10)  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                     &trans                     &msc MOVE_Y(10)                     &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &Contro_Mod_Universal LEFT_COMMAND RETURN                                                                 &trans  &trans  &trans
-            >;
-
-            label = "Scroll_Layer";
         };
     };
 
